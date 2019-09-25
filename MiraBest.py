@@ -34,7 +34,7 @@ class MiraBest(data.Dataset):
     base_folder = 'htru1-batches-py'
     url = "http://www.jb.man.ac.uk/research/ascaife/htru1-batches-py.tar.gz" # Needs replaced
     filename = "batches.tar.gz"
-    tgz_md5 = 'f8a262b8293a5121ed096087d869be24'
+    tgz_md5 = 'fa9d6ad8fdde95b0a19df11433e8bca3'
     train_list = [
                   ['data_batch_1', 'c8553f5c39137ba41dc302be689fa425'],
                   ['data_batch_2', '07a11c5cae9036d41a4241722be20fdb'],
