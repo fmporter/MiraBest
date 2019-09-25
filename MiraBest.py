@@ -48,11 +48,11 @@ class MiraBest(data.Dataset):
 
     test_list = [
                  ['test_batch', '58e771ce101c4cbe8595b214d0cf02c3'],
-                 ] # Needs updating below this point
+                 ] 
     meta = {
                 'filename': 'batches.meta',
                 'key': 'label_names',
-                'md5': '5429d773dafec7781e0eeacb29768819',
+                'md5': '712f770028e9a0eaac781559b0583435',
                 }
 
     def __init__(self, root, train=True,
