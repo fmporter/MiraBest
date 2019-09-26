@@ -31,7 +31,7 @@ class MiraBest(data.Dataset):
             downloaded again.
     """
 
-    base_folder = 'htru1-batches-py'
+    base_folder = 'batches'
     url = "http://www.jb.man.ac.uk/research/MiraBest/batches.tar.gz"
     filename = "batches.tar.gz"
     tgz_md5 = 'fa9d6ad8fdde95b0a19df11433e8bca3'
@@ -95,9 +95,8 @@ class MiraBest(data.Dataset):
                 else:
                     self.targets.extend(entry['fine_labels'])
 
-        self.data = np.vstack(self.data).reshape(-1, 3, 32, 32)
+        self.data = np.vstack(self.data).reshape(-1, 1, 150, 150)
         self.data = self.data.transpose((0, 2, 3, 1))  # convert to HWC
-
         self._load_meta()
 
     def _load_meta(self):
@@ -124,6 +123,7 @@ class MiraBest(data.Dataset):
 
         # doing this so that it is consistent with all other datasets
         # to return a PIL Image
+        img = np.reshape(img,(150,150))
         img = Image.fromarray(img)
 
         if self.transform is not None:
