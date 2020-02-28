@@ -32,7 +32,7 @@ class MiraBest(data.Dataset):
     """
 
     base_folder = 'batches'
-    url = "http://www.jb.man.ac.uk/research/MiraBest/batches.tar.gz"
+    url = "http://www.jb.man.ac.uk/research/MiraBest/basic/batches.tar.gz"
     filename = "batches.tar.gz"
     tgz_md5 = 'fa9d6ad8fdde95b0a19df11433e8bca3'
     train_list = [
