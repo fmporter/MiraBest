@@ -14,12 +14,11 @@ from torchvision.datasets.utils import download_url, check_integrity
 
 
 class MiraBest(data.Dataset):
-    """ MiraBest Dataset
-    
-    Inspired by `HTRU1 <https://as595.github.io/HTRU1/>`_ Dataset.
+    """Inspired by `HTRU1 <https://as595.github.io/HTRU1/>`_ Dataset.
+
     Args:
         root (string): Root directory of dataset where directory
-            ``htru1-batches-py`` exists or will be saved to if download is set to True.
+            ``MiraBest.py` exists or will be saved to if download is set to True.
         train (bool, optional): If True, creates dataset from training set, otherwise
             creates from test set.
         transform (callable, optional): A function/transform that takes in an PIL image
@@ -29,30 +28,32 @@ class MiraBest(data.Dataset):
         download (bool, optional): If true, downloads the dataset from the internet and
             puts it in root directory. If dataset is already downloaded, it is not
             downloaded again.
+
     """
 
-    base_folder = 'batches'
-    url = "http://www.jb.man.ac.uk/research/MiraBest/basic/batches.tar.gz"
-    filename = "batches.tar.gz"
-    tgz_md5 = 'fa9d6ad8fdde95b0a19df11433e8bca3'
+    base_folder = 'MiraBest_dataset'
+    url = "http://www.jb.man.ac.uk/research/MiraBest/basic/MiraBest_basic_batches.tar.gz" 
+    filename = "MiraBest_basic_batches.tar.gz"
+    tgz_md5 = '7a4cbda3c88c85c69173bd4fda978a86'
     train_list = [
-                  ['data_batch_1', 'c8553f5c39137ba41dc302be689fa425'],
-                  ['data_batch_2', '07a11c5cae9036d41a4241722be20fdb'],
-                  ['data_batch_3', '162c84378d8357c4d2456db8cdae3920'],
-                  ['data_batch_4', '1ad4b501088a6d7f8b72f5079b6fdacf'],
-                  ['data_batch_5', 'e1807ceb56507a1f4b75a9db746115cd'],
-                  ['data_batch_6', '1fd032d36f34d1090c153bf6ea126f65'],
-                  ['data_batch_7', 'fe6af26ec520a988087c1d23d645cf83'],
-                  ['data_batch_8', '3466396ca190e7c36b47fbb9c4067dbf'],
+                  ['data_batch_1', '6c501a41da89217c7fda745b80c06e99'],
+                  ['data_batch_2', 'e4a1e5d6f1a17c65a23b9a80969d70fb'],
+                  ['data_batch_3', 'e326df6fe352b669da8bf394e8ac1644'],
+                  ['data_batch_4', '7b9691912178497ad532c575e0132d1f'],
+                  ['data_batch_5', 'de822b3c21f13c188d5fa0a08f9fcce2'],
+                  ['data_batch_6', '39b38c3d63e595636509f5193a98d6eb'],
+                  ['data_batch_7', 'f980bfd2b1b649f6142138f2ae76d087'],
+                  ['data_batch_8', 'a5459294e551984ac26056ba9f69a3f8'],
+                  ['data_batch_9', '34414bcae9a2431b42a7e1442cb5c73d'],
                   ]
 
     test_list = [
-                 ['test_batch', '58e771ce101c4cbe8595b214d0cf02c3'],
-                 ] 
+                 ['test_batch', 'd12d31f7e8d60a8d52419a57374d0095'],
+                 ]
     meta = {
                 'filename': 'batches.meta',
                 'key': 'label_names',
-                'md5': '712f770028e9a0eaac781559b0583435',
+                'md5': '97de0434158b529b5701bb3a1ed28ec6',
                 }
 
     def __init__(self, root, train=True,
@@ -96,7 +97,8 @@ class MiraBest(data.Dataset):
                     self.targets.extend(entry['fine_labels'])
 
         self.data = np.vstack(self.data).reshape(-1, 1, 150, 150)
-        self.data = self.data.transpose((0, 2, 3, 1))  # convert to HWC
+        self.data = self.data.transpose((0, 2, 3, 1))
+
         self._load_meta()
 
     def _load_meta(self):
@@ -116,6 +118,7 @@ class MiraBest(data.Dataset):
         """
         Args:
             index (int): Index
+
         Returns:
             tuple: (image, target) where target is index of the target class.
         """
@@ -124,7 +127,7 @@ class MiraBest(data.Dataset):
         # doing this so that it is consistent with all other datasets
         # to return a PIL Image
         img = np.reshape(img,(150,150))
-        img = Image.fromarray(img)
+        img = Image.fromarray(img,mode='L')
 
         if self.transform is not None:
             img = self.transform(img)
