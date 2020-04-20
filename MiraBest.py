@@ -34,7 +34,7 @@ class MiraBest(data.Dataset):
     base_folder = 'MiraBest_dataset'
     url = "http://www.jb.man.ac.uk/research/MiraBest/basic/MiraBest_basic_batches.tar.gz" 
     filename = "MiraBest_basic_batches.tar.gz"
-    tgz_md5 = '7a4cbda3c88c85c69173bd4fda978a86'
+    tgz_md5 = '6c9a3e6ca3c0f3d27f9f6dca1b9730e1'
     train_list = [
                   ['data_batch_1', '6c501a41da89217c7fda745b80c06e99'],
                   ['data_batch_2', 'e4a1e5d6f1a17c65a23b9a80969d70fb'],
